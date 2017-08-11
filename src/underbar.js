@@ -203,6 +203,16 @@
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
+  /*
+  _.some = function(collection, iterator) {
+    // TIP: Try re-using every() here.
+    iterator = iterator || _.identity;
+    return _.reduce(collection, function(allItemsTrue, item) {
+      return allItemsTrue || Boolean(iterator(item));
+    }, false);
+
+  };*/
+
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
     
@@ -328,6 +338,23 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
+
+
+/*  _.shuffle = function(array) {       
+     var result = [];     
+     var used = [];     
+        
+     while (array.length !== result.length){
+     var index = Math.floor(Math.random()*array.length);
+         if (!used.includes(index)){
+             result.push(array[index]);
+             used.push(index);
+         }         
+     }
+     return result;     
+  };*/
+
+  
   _.shuffle = function(array) {
     var result = array.slice();    
 
@@ -472,40 +499,3 @@
     };
 }());
 
-// fn = throttle(callback, 100) //can only be called after 100ms
-// fn(); //called, starts timer
-// setTimeout(fn, 50)  
-// setTImeout(fn, 100) 
-// setTImeout(fn, 150) 
-// setTimeout(fn, 199) 
-// clock.tick(200)     //fn should only been called twice after 200ms
-
-/*  _.delay = function(func, wait, ...args) {
-
-    setTimeout(function(){
-      return func(...args);
-    }, wait);
-  };
-
-    _.once = function(func) {
-    // TIP: These variables are stored in a "closure scope" (worth researching),
-    // so that they'll remain available to the newly-generated function every
-    // time it's called.
-    var alreadyCalled = false;
-    var result;
-
-    // TIP: We'll return a new function that delegates to the old one, but only
-    // if it hasn't been called before.
-    return function() {
-      if (!alreadyCalled) {
-        // TIP: .apply(this, arguments) is the standard way to pass on all of the
-        // infromation from one function call to another.
-        result = func.apply(this, arguments);
-        alreadyCalled = true;
-      }
-      // The new function always returns the originally computed result.
-      return result;
-    };
-  };
-
-*/
