@@ -329,15 +329,18 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
-    var result = array.slice();
-    var randIndex = Math.floor(Math.random()*array.length);
-    _.each(result, function(el,i){
-      if(i !== randIndex){
-        var temp = result[randIndex];
-        result[randIndex]=el;
-        result[i]=temp;
-      }
-    });
+    var result = array.slice();    
+
+    for (var i = 0; i < 10; i ++){
+      var randIndex = Math.floor(Math.random()*array.length);
+      _.each(result, function(el,i){
+        if(i !== randIndex){
+          var temp = result[randIndex];
+          result[randIndex]=el;
+          result[i]=temp;
+        }
+      });
+    }    
     return result;
   };
 
